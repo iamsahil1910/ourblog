@@ -1,25 +1,13 @@
-{% extends "base  .html" %}
+{% extends "base.html" %}
 {% block main %}
-    <div class="container">
-      <div class="row">
-        <div class="col-md-8">
-            <h1 class="text-dark display-4 mt-100" style="font-size:80px" >Admin Login</h1>
+      <h1>Admin Login</h1>
+      <form action="/login" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text"/>
         </div>
-        <div class="col-md-4">
-          <div class="card mt-100" >
-            <div class="card-body">
-              <form >
-                <label>Email</label></br>
-                <input type="email" placeholder="Enter Email" class="form-control"><br>
-                <label>Password</label>
-                <input type="password" placeholder="Enter password" class="form-control"><br><br>
-                <input type="submit" class="btn btn-primary btn-block btn-lg" value="Login">
-
-              </form>
-            </div>
-          </div>
-
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password"/>
         </div>
-      </div>
-    </div>
+        <button class="btn btn-primary" type="submit">Log In</button>
+    </form>
 {% endblock %}

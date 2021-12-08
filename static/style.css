@@ -1,57 +1,32 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: #2980B9;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-color: #e2e8f0;
 
 }
 
-.topnav {
-  overflow: hidden;
-  background-color: #e9e9e9;
-  padding: 1em;
+.btn-search {
+    padding: 0.3em;
 }
 
-.topnav a {
-  float: left;
-  display: block;
-  color: black;
-  text-align: center;
-  text-decoration: none;
-  font-size: 30px;
+#searchbox{
+    width: 100%;
+    overflow: hidden;
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
 }
 
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
+.main {
+    text-align: center;
 }
 
-.topnav .search-container {
-  float: right;
+.form-group {
+    margin: 1em auto;
+    
 }
 
-.topnav input[type=text] {
-  padding: 0.5em;
-  font-size: 17px;
-  border: none;
-}
-
-.topnav .search-container button {
-  float: right;
-  padding: .5em;
-  margin-right: 16px;
-  background: #ddd;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-}
-
-.topnav .search-container button:hover {
-  background: #ccc;
-}
-
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
   .topnav .search-container {
     float: none;
   }
@@ -66,85 +41,26 @@ body {
   .topnav input[type=text] {
     border: 1px solid #ccc;  
   }
-}
+} */
 
+.form-group {
+    width: 16em;
+}
 .footer-text{
     color: black;
 }
 .footer{
     text-align: center;
-    background: #2980B9;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     height: 30px;
-    margin-top: 180px;
+    margin-top: 5em;
 }
 
-.mt-100{
-    margin-top: 100px;
-    font-weight: bold;
-}
-
-
-.col-md-8{
-    margin-top:80px;
-    padding-right: 30px;
-    
-}
-.col-md-4{
-    
-    padding-right:10px;
-    padding-left: 1px;
-}
 
 nav .navbar-brand
 {
     /* size for brand */
     font-size: xx-large;
 }
-
-/* colors for brand */
-nav .navbar-brand .blue
-{
-    color: #537fbe;
-}
-nav .navbar-brand .red
-{
-    color: #ea433b;
-}
-nav .navbar-brand .yellow
-{
-    color: #f5b82e;
-}
-nav .navbar-brand .green
-{
-    color: #2e944b;
-}
-
-main .form-control
-{
-    /* center form controls */
-    display: inline-block;
-
-    /* override Bootstrap's 100% width for form controls */
-    width: auto;
-}
-
-main
-{
-    /* scroll horizontally as needed */
-    overflow-x: auto;
-
-    /* center contents */
-    text-align: center;
-}
-
-main img
-{
-    /* constrain images on small screens */
-    max-width: 100%;
-}
-
 #searchbox{
     width: 100%;
     overflow: hidden;
