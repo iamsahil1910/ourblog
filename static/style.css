@@ -27,8 +27,6 @@ body {
   color: black;
 }
 
-
-
 .topnav .search-container {
   float: right;
 }
@@ -174,4 +172,33 @@ main img
 
 .social-buttons button {
 	margin-top: 5px;
+}
+
+#left {
+    border-right: 2px solid rgb(144, 175, 144);
+}
+.btn-post {
+    width: 10em;
+}
+.search-text {
+    width: 25em;
+    display: inline;
+}
+.card {
+    margin-bottom: 0.5em;
+    box-shadow: 2px 2px 2px rgb(144, 175, 144);
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+.card:hover {
+    transform: scale(1.03);
+}
+.delete-blog {
+    position:absolute;
+    top:0;
+    right:0;
+}
+.btn-delete {
+    border-radius: 10px;
+    border: none;
 }

@@ -1,0 +1,98 @@
+{% extends "base  .html" %}
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 p-4" id="left">
+            <h2>New Blog</h2>
+            <hr>
+            <div>
+                <form>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="title" placeholder="Blog Title" name="title" />
+                      </div>
+                      <div class="mb-3">
+                        <input type="file" class="form-control" id="myFile" name="filename" >
+                      </div>
+                      <div class="mb-3">
+                        <textarea class="form-control" id="content" rows="20" name="content" placeholder="Write..."></textarea>
+                      </div>
+                      <div class="mb-3 text-center">
+                        <input type="submit" class="btn btn-success btn-post" value="Post" />
+                      </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-xs-6 col-sm-6 p-4">
+            <h2>All Blogs</h2>
+            <hr>
+            <div>
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title text-left">Blog One</h5>
+                        <p class="card-text text-right">Date: 12-Dec-2021</p>
+                        <form method=post class=delete-blog onsubmit="return deleteSure()">
+                            <input type="hidden" value="blog_id" name="blog" />
+                            <input type="submit" class="btn-delete" value="X"/>
+                        </form>
+                    </div>
+                    <div class="card-body">
+                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title text-left">Blog One</h5>
+                        <p class="card-text text-right">Date: 12-Dec-2021</p>
+                        <form method=post class=delete-blog>
+                            <input type="hidden" value="blog_id" name="blog" />
+                            <input type="submit" class="btn-delete" value="X"/>
+                        </form>
+                    </div>
+                    <div class="card-body">
+                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title text-left">Blog One</h5>
+                        <p class="card-text text-right">Date: 12-Dec-2021</p>
+                        <form method=post class=delete-blog>
+                            <input type="hidden" value="blog_id" name="blog" />
+                            <input type="submit" class="btn-delete" value="X"/>
+                        </form>
+                    </div>
+                    <div class="card-body">
+                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title text-left">Blog One</h5>
+                        <p class="card-text text-right">Date: 12-Dec-2021</p>
+                        <form method=post class=delete-blog>
+                            <input type="hidden" value="blog_id" name="blog" />
+                            <input type="submit" class="btn-delete" value="X"/>
+                        </form>
+                    </div>
+                    <div class="card-body">
+                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title text-left">Blog One</h5>
+                        <p class="card-text text-right">Date: 12-Dec-2021</p>
+                        <form method=post class=delete-blog>
+                            <input type="hidden" value="blog_id" name="blog" />
+                            <input type="submit" class="btn-delete" value="X"/>
+                        </form>
+                    </div>
+                    <div class="card-body">
+                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    </div>
+                </div>
+            </div>
+        </div>      
+    </div>
+</div>
+{% endblock %}
