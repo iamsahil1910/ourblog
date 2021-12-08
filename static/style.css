@@ -99,9 +99,6 @@ body {
     padding-left: 1px;
 }
 
-
-
-
 nav .navbar-brand
 {
     /* size for brand */
@@ -160,4 +157,21 @@ main img
 
 .search-field {
     display: inline;
+}
+
+#comments, #comments li {
+    margin: 0;
+    padding: 0;
+}
+
+#comments li {
+    list-style: none;
+}
+        
+.photo {
+	margin-bottom: 10px;
+}
+
+.social-buttons button {
+	margin-top: 5px;
 }
