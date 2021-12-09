@@ -113,6 +113,23 @@ nav .navbar-brand
     right:0;
 }
 
+.delete-blog:hover {
+    transform: scale(1.2);
+}
+
+.admin-edit {
+    color: blue !important;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+
+}
+
+.admin-edit:hover {
+    color: red !important;
+    transform: scale(1.2);
+}
+
 .green {
     color: green;
 }

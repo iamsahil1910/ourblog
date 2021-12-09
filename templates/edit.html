@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block main %}
+    <div class="container p-5">
+        <h2>Edit Blog</h2>
+            <hr>
+            <div>
+                {% if message %}
+                    <p style="color: red">{{ message }}</p>
+                {% endif %}
+                <form action="/edit-blog" method="post">
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="title" placeholder="Blog Title" value="{{ blog["title"] }}" name="title" />
+                      </div>
+                      <div class="mb-3">
+                        <textarea class="form-control" id="content" rows="20" name="content" placeholder="Write...">{{ blog["content"] }}"</textarea>
+                      </div>
+                      <input type="hidden" value="{{ blog["blog_id"] }}" name="blog_id" />
+                      <div class="mb-3 text-center">
+                        <input type="submit" class="btn btn-success btn-post" value="Post" />
+                      </div>
+                </form>
+            </div>
+    </div>
+{% endblock %}

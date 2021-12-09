@@ -155,6 +155,52 @@ def search():
     
         return render_template("search.html", row=row, query=request.form.get("search"))
 
+
+@app.route("/edit/<int:blog_id>")
+def edit(blog_id):
+
+    if session.get("user_id") is None:
+        flash('To edit please login as admin')
+        return redirect('/login')
+
+    blog = db.execute("SELECT * FROM blog WHERE blog_id = :blog_id", {
+        'blog_id': blog_id
+    }).fetchone()
+
+    return render_template('edit.html', blog=blog)
+
+        
+
+
+@app.route("/edit-blog", methods=["POST"])
+def edit_blog():
+
+    if session.get("user_id") is None:
+        flash('To edit please login as admin')
+        return redirect('/login')
+
+    if not request.form.get("title"):
+        return render_template("edit.html", message = "Title Missing")
+
+    if not request.form.get("content"):
+        return render_template("edit.html", message = "Content Missing")
+
+    blog_id = request.form.get("blog_id")
+
+    db.execute("UPDATE blog SET title = :title, content = :content WHERE blog_id = :blog_id", {
+        'blog_id': blog_id, 'title': request.form.get("title"), 'content': request.form.get("content")
+    })
+
+    db.commit()
+
+    flash('Blog is updated!')
+
+    return redirect('/blog/' + str(blog_id))
+
+    
+
+
+
 if(__name__ == "__main__"):
     app.run(debug = True, port=8080)
     
