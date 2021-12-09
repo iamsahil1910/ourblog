@@ -69,19 +69,19 @@ def admin():
 
     if request.method == "GET":
 
-        return render_template('admin.html')
+        blogs = db.execute("SELECT * FROM blog").fetchall()
+
+
+        return render_template('admin.html', blogs=blogs)
 
     else:
         if not request.form.get("title"):
             return render_template("admin.html", message = "Title Missing")
         if not request.form.get("name"):
             return render_template("admin.html", message = "Name Missing")
-        # if not request.form.get("filename"):
-        #     return render_template("admin.html", message = "File Missing")
         if not request.form.get("content"):
             return render_template("admin.html", message = "Content Missing")
         file = request.files['filename']
-        print(file)
         filename = secure_filename(file.filename)
         file.save(filename)
 

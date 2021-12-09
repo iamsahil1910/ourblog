@@ -106,6 +106,12 @@ nav .navbar-brand
     border-radius: 10px;
     background-color: #ffffff;
 }
+
+.front-page {
+  display: inline;
+  margin: 1em;
+}
+
 .card:hover {
     transform: scale(1.03);
 }
@@ -125,4 +131,12 @@ nav .navbar-brand
 }
 h5{
   color: black;
+}
+
+.blogs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
 }

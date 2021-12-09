@@ -23,11 +23,10 @@
   <div class="row g-3">   
   </div>
     {% if blogs %}
-    {% for i in blogs %}
-    <div class="container">
-        <div class="row g-4">
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card" style="padding: 20px; ">
+      <div class="container">
+      <div class="blogs">
+        {% for i in blogs %}
+                <div class="card front-page" style="padding: 20px; ">
                     <img src="../{{ i['img'] }}" class="card-img-top" alt="...">
                     <div class="card-body">
                       <h5 class="card-title">{{ i["title"] }}</h5>
@@ -36,11 +35,9 @@
                       <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </div>
-              </div>
-        </div>
+      {% endfor %}
+          </div>
     </div>
-        
-    {% endfor %}
     {% else %}
     <h1>Wow! Such empty</h1>
     {% endif %}
