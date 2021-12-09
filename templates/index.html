@@ -31,8 +31,9 @@
                     <div class="card-body">
                       <h5 class="card-title">{{ i["title"] }}</h5>
                       <p class="card-title">By: {{ i["name"] }} on {{ i["date"]}} </p>
+                      <hr>
                       <p class="card-text">{{i["content"]}}</p>
-                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                      <a href="/blog/{{ i["blog_id"] }}" class="btn btn-primary">Read Full Blog</a>
                     </div>
                 </div>
       {% endfor %}

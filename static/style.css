@@ -137,9 +137,10 @@ h5{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 10px;
-  background-color: #2196F3;
+  background-color: #d1dae2;
   padding: 10px;
 }
+
 
 .img-responsive {
     display: block;
@@ -1480,3 +1481,58 @@ h5{
   a:hover {
     outline: 0;
   }
+@media (min-width: 768px) {
+    .blogs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+        background-color: #d1dae2;
+        padding: 10px;
+      }
+
+}
+
+@media (min-width: 768px) and (max-width: 1280px){
+    .blogs {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 10px;
+        background-color: #d1dae2;
+        padding: 10px;
+      }
+
+}
+
+@media (min-width: 0px) and (max-width: 768px){
+    .blogs {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-gap: 10px;
+        background-color: #d1dae2;
+        padding: 10px;
+      }
+
+}
+.card-text {
+    overflow: hidden;
+    height: 4em;
+}
+
+.admin-card {
+    height: 3em;
+}
+
+.text-center {
+    margin: 0.5em auto;
+}
+
+.admin-blogs {
+    overflow-y: scroll;
+    height: 100vh;
+    width: 100%;
+}
+
+.admin-main-card {
+    width: 98%;
+    margin-bottom: 0.5em;
+}
