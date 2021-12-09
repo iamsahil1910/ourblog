@@ -13,9 +13,7 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-UPLOAD_FOLDER = '/static/images/'
 
-app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 # Set up database
 engine = create_engine("postgresql:///temp")
@@ -60,6 +58,8 @@ def logout():
 
     return redirect('/login')
 
+app.config["UPLOAD_PATH"] = '/static/images'
+
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
 
@@ -83,7 +83,8 @@ def admin():
             return render_template("admin.html", message = "Content Missing")
         file = request.files['filename']
         filename = secure_filename(file.filename)
-        file.save(filename)
+        
+        file.save(os.path.join('static/images/',filename))
 
         time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
        

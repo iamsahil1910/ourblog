@@ -137,6 +137,6 @@ h5{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 10px;
-  background-color: #2196F3;
+  background-color: grey;
   padding: 10px;
 }

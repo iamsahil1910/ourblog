@@ -27,7 +27,7 @@
       <div class="blogs">
         {% for i in blogs %}
                 <div class="card front-page" style="padding: 20px; ">
-                    <img src="../{{ i['img'] }}" class="card-img-top" alt="...">
+                    <img src="../static/images/{{i['img']}}" class="card-img-top" alt="Card image cap">
                     <div class="card-body">
                       <h5 class="card-title">{{ i["title"] }}</h5>
                       <p class="card-title">By: {{ i["name"] }} on {{ i["date"]}} </p>
