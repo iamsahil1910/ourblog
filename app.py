@@ -87,10 +87,12 @@ def admin():
 
         time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
        
-        # print(request.form.get("filename"))
-        # db.execute("INSERT INTO blog (title, user_id, date, content, img, name) VALUES(:title, :user_id, :date, :content, :img, :name)", {
-        #     'title': request.form.get("title"), 'user_id': session["user_id"], 'date': time, 'content': request.form.get("content"), 
-        # })
+        print(request.form.get("filename"))
+        db.execute("INSERT INTO blog (title, user_id, date, content, img, name) VALUES(:title, :user_id, :date, :content, :img, :name)", {
+            'title': request.form.get("title"), 'user_id': session["user_id"], 'date': time, 'content': request.form.get("content"), 'img': secure_filename(file.filename), 'name': request.form.get('name')
+        })
+
+        db.commit()
 
         return redirect('/admin')
         
