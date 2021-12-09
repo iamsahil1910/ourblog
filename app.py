@@ -13,9 +13,7 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-UPLOAD_FOLDER = '/static/images/'
 
-app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
 
 # Set up database
 engine = create_engine("postgresql:///temp")
@@ -60,6 +58,8 @@ def logout():
 
     return redirect('/login')
 
+app.config["UPLOAD_PATH"] = '/static/images'
+
 @app.route('/admin', methods=['GET', 'POST'])
 def admin():
 
@@ -83,7 +83,8 @@ def admin():
             return render_template("admin.html", message = "Content Missing")
         file = request.files['filename']
         filename = secure_filename(file.filename)
-        file.save(filename)
+        
+        file.save(os.path.join('static/images/',filename))
 
         time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
        
@@ -101,8 +102,14 @@ def admin():
 def blog(blog_id):
 
     blog = db.execute("SELECT * FROM blog WHERE blog_id = :blog_id", {'blog_id': blog_id}).fetchone()
+    count = db.execute("SELECT COUNT(*) FROM blog").fetchone()
+    recent_blogs = ''
+    if count[0] < 5:
+        recent_blogs = db.execute("SELECT * FROM blog ORDER BY blog_id DESC").fetchall()
+    else:
+        recent_blogs = db.execute("SELECT * FROM blog LIMT 5 ORDER BY blog_id DESC").fetchall()
 
-    return render_template('blog.html', blog=blog)
+    return render_template('blog.html', blog=blog, recent_blogs=recent_blogs)
 
 
 @app.route('/delete-blog', methods=['GET', 'POST'])
