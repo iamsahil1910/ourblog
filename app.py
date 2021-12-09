@@ -116,7 +116,7 @@ def blog(blog_id):
 def delete_blog():
 
     if session.get("user_id") is None:
-
+        flash('To delele please login as admin')
         return redirect('/login')
 
     if request.method == "GET":
@@ -154,7 +154,6 @@ def search():
             return render_template('search.html', query=request.form.get("search"))
     
         return render_template("search.html", row=row, query=request.form.get("search"))
-
 
 if(__name__ == "__main__"):
     app.run(debug = True, port=8080)

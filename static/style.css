@@ -9,6 +9,15 @@ body {
     padding: 0.3em;
 }
 
+.admin-blogs a{
+    text-decoration: none;
+    color: black;
+}
+
+.text-right {
+    text-align: right;
+}
+
 #searchbox{
     width: 100%;
     overflow: hidden;
@@ -25,23 +34,6 @@ body {
     margin: 1em auto;
     
 }
-
-/* @media screen and (max-width: 600px) {
-  .topnav .search-container {
-    float: none;
-  }
-  .topnav a, .topnav input[type=text], .topnav .search-container button {
-    float: none;
-    display: block;
-    text-align: left;
-    width: 80%;
-    margin: 0;
-    padding: 14px;
-  }
-  .topnav input[type=text] {
-    border: 1px solid #ccc;  
-  }
-} */
 
 .form-group {
     width: 16em;
@@ -120,6 +112,11 @@ nav .navbar-brand
     top:0;
     right:0;
 }
+
+.green {
+    color: green;
+}
+
 .btn-delete {
     border-radius: 10px;
     border: none;
@@ -1481,16 +1478,6 @@ h5{
   a:hover {
     outline: 0;
   }
-@media (min-width: 768px) {
-    .blogs {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 10px;
-        background-color: #d1dae2;
-        padding: 10px;
-      }
-
-}
 
 @media (min-width: 768px) and (max-width: 1280px){
     .blogs {

@@ -34,11 +34,12 @@
             {% if blogs %}
             <div class="admin-blogs">
             {% for blog in blogs %}
+                <a href="/blog/{{ blog["blog_id"] }}">
                 <div class="card admin-main-card">
-                    <div class="card-header">
-                        <h5 class="card-title text-left">{{ blog["title"] }}</h5>
-                        <p class="text-right">Date: {{ blog["date"] }}</p>
-                        <form action="/delete-blog" method=post class=delete-blog onsubmit="return deleteSure()">
+                    <div class="card-header pb-0">
+                        <h5 class="card-title green">{{ blog["title"] }}</h5>
+                        <p class="text-right">Posted By: {{ blog["name"] }} on {{ blog["date"] }}</p>
+                        <form action="/delete-blog" method="post" class="delete-blog" onsubmit="return deleteSure()">
                             <input type="hidden" value="{{ blog["blog_id"] }}" name="blog" />
                             <input type="submit" class="btn-delete" value="X"/>
                         </form>
@@ -46,7 +47,8 @@
                     <div class="card-body">
                       <p class="card-text admin-card">{{ blog["content"] }}</p>
                     </div>
-                </div>                        
+                </div>   
+                </a>                     
             {% endfor %}
             </div>
 
