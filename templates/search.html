@@ -1,29 +1,27 @@
 {% extends 'base.html' %}
 {% block main %}
-<div class="col-xs-6 col-sm-6 p-4">
-    <h2>All Blogs</h2>
-    <hr>
-    {% if row %}
-    {% for blog in row %}
-    <h1>hello</h1>
+<div class="container p-5">
+    {% if row %}    
     <div>
-        <div class="card">
-            <div class="card-header">
-                <h5 class="card-title text-left">{{ blog["title"] }}</h5>
-                <p class="card-text text-right">Date: {{ blog["date"] }}</p>
-                <form method=post class=delete-blog onsubmit="return deleteSure()">
-                    <input type="hidden" value="blog_id" name="blog" />
-                    <input type="submit" class="btn-delete" value="X"/>
-                </form>
-            </div>
-            <div class="card-body">
-              <p class="card-text">{{ blog["content"] }}</p>
-            </div>
-        </div>                        
+        <h2>Search Results for {{ query }}</h2>
+        <hr>
+        <div class="blogs">
+            {% for i in row %}
+                <div class="card front-page" style="padding: 20px; ">
+                    <img src="../static/images/{{i['img']}}" class="card-img-top" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ i["title"] }}</h5>
+                        <p class="card-title">By: {{ i["name"] }} on {{ i["date"]}} </p>
+                        <hr>
+                        <p class="card-text">{{i["content"]}}</p>
+                        <a href="/blog/{{ i["blog_id"] }}" class="btn btn-primary">Read Full Blog</a>
+                    </div>
+                </div>
+          {% endfor %}
+        </div>                       
     </div>
-    {% endfor %}
     {% else %}
-    <h2>Empty, You should write something!</h2>
+    <h2>No Results </h2>
     {% endif %}
 </div>   
 {% endblock %}
