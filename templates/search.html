@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block main %}
+<div class="container p-5">
+    {% if row %}    
+    <div>
+        <h2>Search Results for {{ query }}</h2>
+        <hr>
+        <div class="blogs">
+            {% for i in row %}
+                <div class="card front-page" style="padding: 20px; ">
+                    <img src="../static/images/{{i['img']}}" class="card-img-top" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ i["title"] }}</h5>
+                        <p class="card-title">By: {{ i["name"] }} on {{ i["date"]}} </p>
+                        <hr>
+                        <p class="card-text">{{i["content"]}}</p>
+                        <a href="/blog/{{ i["blog_id"] }}" class="btn btn-primary">Read Full Blog</a>
+                    </div>
+                </div>
+          {% endfor %}
+        </div>                       
+    </div>
+    {% else %}
+    <h2>No Results </h2>
+    {% endif %}
+</div>   
+{% endblock %}

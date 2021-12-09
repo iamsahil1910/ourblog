@@ -139,6 +139,22 @@ def delete_blog():
 
         return redirect('/admin')
 
+        
+@app.route("/search",methods=['GET', 'POST'])
+def search():
+
+    if request.method == "POST":
+
+        if not request.form.get("search"):
+           return render_template("search.html", message = "No Query Provided")
+
+        row = db.execute("SELECT * FROM blog WHERE LOWER(title)  LIKE :query " , {'query': '%' + request.form.get("search").lower() + '%'}).fetchall()
+    
+        if len(row) == 0:
+            return render_template('search.html', query=request.form.get("search"))
+    
+        return render_template("search.html", row=row, query=request.form.get("search"))
+
 
 if(__name__ == "__main__"):
     app.run(debug = True, port=8080)
