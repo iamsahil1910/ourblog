@@ -138,6 +138,18 @@ def delete_blog():
         flash('One Blog Deleted!')
 
         return redirect('/admin')
+@app.route("/search",methods=["GET", "POST"])
+def search():
+    if request.method =="POST":
+        if not request.form.get("search"):
+           return render_template("search.html", message = " Enter something for search")
+        row = db.execute("SELECT * FROM blog WHERE LOWER(title)  LIKE :query " , {'query': '%' + request.form.get("search").lower() + '%'}).fetchall()
+    
+        if len(row)==0:
+            return render_template('search.html', message = 'No Result Found')
+       
+
+        return render_template("search.html",row=row)
 
 
 if(__name__ == "__main__"):

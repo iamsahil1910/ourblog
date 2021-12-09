@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block main %}
+<div class="col-xs-6 col-sm-6 p-4">
+    <h2>All Blogs</h2>
+    <hr>
+    {% if row %}
+    {% for blog in row %}
+    <h1>hello</h1>
+    <div>
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title text-left">{{ blog["title"] }}</h5>
+                <p class="card-text text-right">Date: {{ blog["date"] }}</p>
+                <form method=post class=delete-blog onsubmit="return deleteSure()">
+                    <input type="hidden" value="blog_id" name="blog" />
+                    <input type="submit" class="btn-delete" value="X"/>
+                </form>
+            </div>
+            <div class="card-body">
+              <p class="card-text">{{ blog["content"] }}</p>
+            </div>
+        </div>                        
+    </div>
+    {% endfor %}
+    {% else %}
+    <h2>Empty, You should write something!</h2>
+    {% endif %}
+</div>   
+{% endblock %}
