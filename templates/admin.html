@@ -32,23 +32,24 @@
             <h2>All Blogs</h2>
             <hr>
             {% if blogs %}
+            <div class="admin-blogs">
             {% for blog in blogs %}
-            <div>
-                <div class="card">
+                <div class="card admin-main-card">
                     <div class="card-header">
                         <h5 class="card-title text-left">{{ blog["title"] }}</h5>
-                        <p class="card-text text-right">Date: {{ blog["date"] }}</p>
-                        <form method=post class=delete-blog onsubmit="return deleteSure()">
-                            <input type="hidden" value="blog_id" name="blog" />
+                        <p class="text-right">Date: {{ blog["date"] }}</p>
+                        <form action="/delete-blog" method=post class=delete-blog onsubmit="return deleteSure()">
+                            <input type="hidden" value="{{ blog["blog_id"] }}" name="blog" />
                             <input type="submit" class="btn-delete" value="X"/>
                         </form>
                     </div>
                     <div class="card-body">
-                      <p class="card-text">{{ blog["content"] }}</p>
+                      <p class="card-text admin-card">{{ blog["content"] }}</p>
                     </div>
                 </div>                        
-            </div>
             {% endfor %}
+            </div>
+
             {% else %}
             <h2>Empty, You should write something!</h2>
             {% endif %}

@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, render_template, redirect, session
+from flask import Flask, request, render_template, redirect, session, flash
 from flask_session import Session
 from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -24,7 +24,7 @@ db = scoped_session(sessionmaker(bind=engine))
 @app.route('/')
 def hello():
 
-    blogs = db.execute("SELECT * FROM blog;").fetchall()
+    blogs = db.execute("SELECT * FROM blog ORDER BY blog_id DESC").fetchall()
     print(blogs)
 
     return render_template('index.html', blogs=blogs)
@@ -69,7 +69,7 @@ def admin():
 
     if request.method == "GET":
 
-        blogs = db.execute("SELECT * FROM blog").fetchall()
+        blogs = db.execute("SELECT * FROM blog ORDER BY blog_id DESC").fetchall()
 
 
         return render_template('admin.html', blogs=blogs)
@@ -97,11 +97,40 @@ def admin():
         return redirect('/admin')
         
         
+@app.route('/blog/<int:blog_id>')
+def blog(blog_id):
 
-        
-@app.route('/blog')
-def blog():
-    return render_template('blog.html')
+    blog = db.execute("SELECT * FROM blog WHERE blog_id = :blog_id", {'blog_id': blog_id}).fetchone()
+
+    return render_template('blog.html', blog=blog)
+
+
+@app.route('/delete-blog', methods=['GET', 'POST'])
+def delete_blog():
+
+    if session.get("user_id") is None:
+
+        return redirect('/login')
+
+    if request.method == "GET":
+
+        return '''
+                <h2>Not a right way to come here</h2>
+                <a href="/">Go to Home page</a>
+            '''
+
+    else:
+
+        blog_id = int(request.form.get("blog"))
+
+        db.execute("DELETE FROM blog WHERE blog_id = :blog_id", {
+            'blog_id': blog_id
+        })
+
+        db.commit()
+        flash('One Blog Deleted!')
+
+        return redirect('/admin')
 
 
 if(__name__ == "__main__"):
