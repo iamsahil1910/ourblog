@@ -17,6 +17,7 @@
                         <input type="text" class="form-control" id="name" placeholder="Your Name" name="name" />
                       </div>
                       <div class="mb-3">
+                        <label style="color: blue;" myFile">Image [Optional] Allowed-types: (png, jpeg, jpg)</label>
                         <input type="file" class="form-control" id="myFile" name="filename" >
                       </div>
                       <div class="mb-3">
@@ -32,7 +33,7 @@
             <h2>All Blogs</h2>
             <hr>
             {% if blogs %}
-            <div class="admin-blogs">
+            <div class="admin-blogs scroll">
             {% for blog in blogs %}
                 <a href="/blog/{{ blog["blog_id"] }}">
                 <div class="card admin-main-card">

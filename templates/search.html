@@ -5,18 +5,30 @@
     <div>
         <h2>Search Results for {{ query }}</h2>
         <hr>
-        <div class="blogs">
+        <div class="blogs mt-4">
             {% for i in row %}
+                {% if i["img"] != "NULL" %}
                 <div class="card front-page" style="padding: 20px; ">
                     <img src="../static/images/{{i['img']}}" class="card-img-top" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">{{ i["title"] }}</h5>
-                        <p class="card-title">By: {{ i["name"] }} on {{ i["date"]}} </p>
-                        <hr>
-                        <p class="card-text">{{i["content"]}}</p>
-                        <a href="/blog/{{ i["blog_id"] }}" class="btn btn-primary">Read Full Blog</a>
+                    <h5 class="card-title">{{ i["title"] }}</h5>
+                    <p class="card-title">By: {{ i["name"] }} on {{ i["date"]}} </p>
+                    <hr>
+                    <p class="card-text">{{i["content"]}}</p>
+                    <a href="/blog/{{ i["blog_id"] }}" class="btn btn-primary">Read Full Blog</a>
                     </div>
                 </div>
+            {% else %}
+                <div class="card front-page" style="padding: 20px; ">
+                <div class="card-body">
+                    <h5 class="card-title">{{ i["title"] }}</h5>
+                    <p class="card-title">By: {{ i["name"] }} on {{ i["date"]}} </p>
+                    <hr>
+                    <p class="card-text card-text-img">{{i["content"]}}</p>
+                    <a href="/blog/{{ i["blog_id"] }}" class="btn btn-primary">Read Full Blog</a>
+                </div>
+                </div>
+            {% endif %}
           {% endfor %}
         </div>                       
     </div>

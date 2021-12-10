@@ -17,17 +17,28 @@
                             By: {{ blog[ "name"] }} posted on {{ blog["date"]}}
                         </p>
                     </div>
-
-                         
-
-                      <hr>
-
-                      <img src="../static/images/{{blog['img']}}" class="img-responsive">
-
-                      <br />
-
+                      <hr>  
+                      <div>
+                        {% if blog["img"] != "NULL" %}
+                            <img src="../static/images/{{ blog['img'] }}" class="img-responsive">
+                        {% endif %}
+                        {% if session.user_id %}
+                            <form action="/change-image" id="changeImage" method="post" enctype="multipart/form-data">
+                                <input type="hidden" value="{{ blog["img"] }}" name="old-img" />
+                                <input type="hidden" value="{{ blog["blog_id"] }}" name="blog_id" />
+                                <div class="upload-btn-wrapper mt-2">
+                                    <input type="file" name="filename" onchange="uploadImage()" />
+                                    {% if blog["img"] == "NULL" %}
+                                        <button class="btn-upload">Upload Image</button>
+                                    {% else %}
+                                        <button class="btn-upload">Edit Image</button>
+                                    {% endif %}
+                                </div>
+                            </form>
+                        {% endif %}
+                        </div>
+                        <hr>
                       <p class="blog-text">{{ blog["content"]}}</p>
-
                       <hr>
                 </article>				
 
@@ -38,13 +49,14 @@
                 <!-- Comment form -->
                 <div class="comment-form">
                     <h4>Leave a comment</h4>
-                    <form role="form" class="clearfix">
+                    <form role="form" action="/comment" method="post">
                       <div class="col-md-8 form-group">
-                        <input autocomplete="off" type="text" class="form-control" id="name" placeholder="Name">
+                        <input autocomplete="off" type="text" class="form-control" id="name" name="name" placeholder="Name">
                       </div>
                       <div class="col-md-12 form-group">
-                        <textarea class="form-control" id="comment" placeholder="Comment"></textarea>
+                        <textarea class="form-control" id="comment" name="comment"" placeholder="Comment"></textarea>
                       </div>
+                      <input type="hidden" name="blog_id" value="{{ blog["blog_id"] }}" /> 
                       <div class="col-md-12 form-group text-right">
                           <button type="submit" class="btn btn-primary">Comment</button>
                       </div>
@@ -57,28 +69,32 @@
                 {% endif %}
                 <div class="comments">
                     <div class="panel-heading">
-                        <h3>Comments</h3>
+                        <h3 class="green">Comments</h3>
                     </div>
-                    <ul class="list-group">
-                        <li class="list-group-item">
-                            <h5 class="p-0 m-0 greem">John</h5>
-                            <p class="p-0 m-0 text-right">12-12-2020</p>
-                            <hr>
-                            <p>I don't believe in astrology but still your writing style is really great!</p>
-                        </ul>
-                        <li class="list-group-item">
-                            <h5 class="p-0 m-0 green">John</h5>
-                            <p class="p-0 m-0 text-right">12-12-2020</p>
-                            <hr>
-                            <p>I don't believe in astrology but still your writing style is really great!</p>
-                        </ul>
-                        <li class="list-group-item">
-                            <h5 class="p-0 m-0 green">John</h5>
-                            <p class="p-0 m-0 text-right">12-12-2020</p>
-                            <hr>
-                            <p>I don't believe in astrology but still your writing style is really great!</p>
-                        </ul>
-                    </ul>
+                    <hr>
+                    {% if comments %}
+                    <div class="scroll">
+                        {% for comment in comments%}
+                            <ul class="list-group">
+                                <li class="list-group-item m-1">
+                                    {% if session.user_id %}
+                                    <form action="/delete-comment" method="post" class="delete-blog" onsubmit="return deleteSure()">
+                                        <input type="hidden" value="{{ comment["id"] }}"" name="comment_id" />
+                                        <input type="hidden" value="{{ blog["blog_id"] }}" name="blog_id" />
+                                        <button type="submit" class="btn-delete"><i class="fa fa-trash"></i></button>
+                                    </form>
+                                    {% endif %}
+                                    <h5 class="p-0 m-0 greem">{{ comment["name"] }}</h5>
+                                    <p class="p-0 m-0 text-right">Posted on: {{ comment["date"] }}</p>
+                                    <hr>
+                                    <p>{{ comment["comment"] }}</p>
+                                </ul>
+                            </ul>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                            <h2 class="list-group-item">No Comments</h2>
+                    {% endif %}
                 </div>
                 
             </div>
@@ -102,10 +118,22 @@
                         <h4>Recent Comments</h4>
                     </div>
                     <ul class="list-group">
-                        <li class="list-group-item">I don't believe in astrology but still your writing style is really great! - <em>john</em></li>
-                        <li class="list-group-item">Wow.. what you said is really true! I'm an aries though - <em>Anto</em></li>
-                        <li class="list-group-item">Does capricorn and aries is compatibile? - <em>Sarah</em></li>
-                        <li class="list-group-item">I'm a cancer woman been in love with Leo. Will this work? - <em>Mary</em></li>
+                        {% if comments %}
+                            {% for i in range(comments_count) %}
+                                <li class="list-group-item">
+                                    {% if session.user_id %}
+                                    <form action="/delete-comment" method="post" class="delete-blog" onsubmit="return deleteSure()">
+                                        <input type="hidden" value="{{ comments[i]["id"] }}" name="comment_id" />
+                                        <input type="hidden" value="{{ blog["blog_id"] }}" name="blog_id" />
+                                        <button type="submit" class="btn-delete"><i class="fa fa-trash"></i></button>
+                                    </form>
+                                    {% endif %}
+                                    {{ comments[i]["comment"] }}- <em>{{ comments[i]["name"] }}</em>
+                                </li>
+                            {% endfor %}
+                        {% else %}
+                            <h2 class="list-group-item">No Comments</h2>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
