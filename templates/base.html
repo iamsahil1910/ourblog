@@ -30,7 +30,7 @@
     
             </nav>
     </header>
-    <div class="main contianer-fluid mt-5">
+    <div class="contianer-fluid margin-extra">
         {% with messages = get_flashed_messages() %}
         {% if messages %}
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -42,7 +42,12 @@
             </nav>
           {% endif %}
           {% endwith %}
-        {% block main %}{% endblock %}
+          
+          <div class="main">
+            {% block main %}
+            {% endblock %}  
+          </div>
+        
     </div>
 
 

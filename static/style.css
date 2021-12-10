@@ -2,7 +2,6 @@ body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #e2e8f0;
-
 }
 
 h4{
@@ -22,6 +21,12 @@ h4{
     text-align: right;
 }
 
+.margin-extra {
+  position: relative;
+  margin-top: 4em;
+  text-align: center;
+}
+
 #searchbox{
     width: 100%;
     overflow: hidden;
@@ -33,6 +38,12 @@ h4{
 .main {
     text-align: center;
     align-items: center;
+    position: relative;
+}
+
+.main > nav {
+  position: relative;
+  top: 1.5em;
 }
 
 
@@ -71,6 +82,19 @@ nav .navbar-brand
     display: inline;
 }
 
+.scroll {
+  overflow: hidden;
+  height: 100vh;
+}
+
+.scroll:hover {
+  overflow: auto;
+  scrollbar-width: 0.1em;
+  height: 100vh;
+  
+}
+
+
 #comments, #comments li {
     margin: 0;
     padding: 0;
@@ -78,11 +102,13 @@ nav .navbar-brand
 
 #comments li {
     list-style: none;
+    background-color: #d1dae2;
 }
         
 .photo {
 	margin-bottom: 10px;
 }
+
 
 .social-buttons button {
 	margin-top: 5px;
@@ -153,12 +179,29 @@ h5{
   color: black;
 }
 
+.carousel-img {
+  filter: brightness(30%);
+}
+
+.carousel-caption {
+  top: 30%;
+}
+
+.carousel-caption h1 {
+  color: rgb(105, 9, 9);
+}
+
+.carousel-caption h3 {
+  color: rgb(43, 223, 43);
+}
+
 .blogs {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 10px;
-  background-color: #d1dae2;
+  opacity: 1;
   padding: 10px;
+  margin-top: -5em;
 }
 
 
@@ -214,6 +257,30 @@ h5{
   transform: scale(1.5);
 }
 
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn-upload {
+  border: 2px solid gray;
+  color: gray;
+  background-color: white;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+
 @media (min-width: 768px) and (max-width: 1280px){
     .blogs {
         display: grid;
@@ -236,8 +303,16 @@ h5{
 
 }
 .card-text {
-    overflow: hidden;
-    height: 4em;
+  overflow: hidden;
+  height: 4em;
+}
+
+.card-text-img {
+  height: 16em;
+}
+
+.front-page img {
+  height: 12em;
 }
 
 .admin-card {
@@ -249,7 +324,7 @@ h5{
 }
 
 .admin-blogs {
-    overflow-y: scroll;
+    overflow-y: overflow;
     height: 100vh;
     width: 100%;
 }

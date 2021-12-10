@@ -5,17 +5,17 @@
     <div class="carousel-inner">
 
       <div class="carousel-item active">
-        <img src="../static/obi-onyeador-UEQvUtRs224-unsplash.jpg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-            <h5>Second slide label</h5>
-            <p>Some representative placeholder content for the third slide.</p>
+        <img src="../static/obi-onyeador-UEQvUtRs224-unsplash.jpg" class="carousel-img d-block w-100" alt="...">
+        <div class="carousel-caption>
+            <h1>OurBlog</h1>
+            <h3>A Website with Flask and Postgres</h3>
           </div>
       </div>
       <div class="carousel-item">
-        <img src="../static/roman-kraft-_Zua2hyvTBk-unsplash.jpg" class="d-block w-100" alt="...">
-        <div class="carousel-caption d-none d-md-block">
-            <h5>First slide label</h5>
-            <p>Some representative placeholder content for the third slide.</p>
+        <img src="../static/roman-kraft-_Zua2hyvTBk-unsplash.jpg" class="carousel-img d-block w-100" alt="...">
+        <div class="carousel-caption">
+            <h1>Features:</h1>
+            <h3>Read, (Write, Edit, Delete) with Admin Access Blogs and Comments</h3>
           </div>
       </div>
     </div>
@@ -26,6 +26,7 @@
       <div class="container">
       <div class="blogs">
         {% for i in blogs %}
+              {% if i["img"] != "NULL" %}
                 <div class="card front-page" style="padding: 20px; ">
                     <img src="../static/images/{{i['img']}}" class="card-img-top" alt="Card image cap">
                     <div class="card-body">
@@ -36,11 +37,22 @@
                       <a href="/blog/{{ i["blog_id"] }}" class="btn btn-primary">Read Full Blog</a>
                     </div>
                 </div>
+              {% else %}
+                <div class="card front-page" style="padding: 20px; ">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ i["title"] }}</h5>
+                    <p class="card-title">By: {{ i["name"] }} on {{ i["date"]}} </p>
+                    <hr>
+                    <p class="card-text card-text-img">{{i["content"]}}</p>
+                    <a href="/blog/{{ i["blog_id"] }}" class="btn btn-primary">Read Full Blog</a>
+                  </div>
+                </div>
+              {% endif %}
       {% endfor %}
       </div>
     </div>
     {% else %}
-    <h1>Wow! Such empty</h1>
+    <h1 class="mt-5">Wow! Such empty</h1>
     {% endif %}
 {% endblock %}
 
