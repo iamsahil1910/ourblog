@@ -107,7 +107,7 @@ def blog(blog_id):
     if count[0] < 5:
         recent_blogs = db.execute("SELECT * FROM blog ORDER BY blog_id DESC").fetchall()
     else:
-        recent_blogs = db.execute("SELECT * FROM blog LIMT 5 ORDER BY blog_id DESC").fetchall()
+        recent_blogs = db.execute("SELECT * FROM blog LIMIT 5 ORDER BY blog_id DESC").fetchall()
 
     return render_template('blog.html', blog=blog, recent_blogs=recent_blogs)
 
