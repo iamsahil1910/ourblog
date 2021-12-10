@@ -327,6 +327,9 @@ h5{
     overflow-y: overflow;
     height: 100vh;
     width: 100%;
+    box-shadow: 1px 1px 1px 1px;
+    padding: 1em;
+    border-radius: 5px;
 }
 
 .admin-main-card {
