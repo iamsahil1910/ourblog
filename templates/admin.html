@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block main %}
-<div class="container">
+<div class="container pt-4">
     <div class="row">
         <div class="col-xs-6 col-sm-6 p-4" id="left">
             <h2>New Blog</h2>
@@ -39,10 +39,10 @@
                     <div class="card-header pb-0">
                         <h5 class="card-title green">{{ blog["title"] }}</h5>
                         <p class="text-right">Posted By: {{ blog["name"] }} on {{ blog["date"] }}</p>
-                        <a class="admin-edit" href="/edit/{{ blog["blog_id"]}}">Edit</a>
+                        <a class="admin-edit" href="/edit/{{ blog["blog_id"]}}"><i class="fa fa-edit"></i></a>
                         <form action="/delete-blog" method="post" class="delete-blog" onsubmit="return deleteSure()">
                             <input type="hidden" value="{{ blog["blog_id"] }}" name="blog" />
-                            <input type="submit" class="btn-delete" value="X"/>
+                            <button type="submit" class="btn-delete"><i class="fa fa-trash"></i></button>
                         </form>
                     </div>
                     <div class="card-body">

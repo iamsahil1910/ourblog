@@ -5,3 +5,7 @@ function  deleteSure() {
         return false;
     }
 }
+
+function myFunction(x) {
+    x.classList.toggle("fa-thumbs-down");
+  }
