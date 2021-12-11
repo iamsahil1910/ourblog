@@ -181,6 +181,12 @@ def delete_blog():
 
     # Get blog Id from form
     blog_id = int(request.form.get("blog"))
+    old_image = request.form.get("img")
+    print(old_image)
+    # If there is old image in blog delete it
+    if not old_image == "NULL":
+        
+        os.remove(os.path.join('static/images/', old_image))
 
     # Delete blog
     db.execute("DELETE FROM blog WHERE blog_id = :blog_id", {
@@ -367,7 +373,7 @@ def handle_404(e):
 
     
 if(__name__ == "__main__"):
-    app.run(debug = True, port=8080, host="0.0.0.0")
+    app.run()
     
 
 
