@@ -1,6 +1,6 @@
 # ourblog
 
-Link: [https://ourblog-innovaccer.herokuapp.com/]
+[Link to Website](https://ourblog-innovaccer.herokuapp.com/)
 
 ### Process TO run 
 
