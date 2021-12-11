@@ -20,7 +20,3 @@ function uploadImage() {
 }
 
 
-let myCarousel = document.querySelector('#carouselSlider')
-let carousel = new bootstrap.Carousel(myCarousel, {
-    interval: 4000,
-})
